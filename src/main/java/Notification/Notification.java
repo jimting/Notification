@@ -1,4 +1,4 @@
-package GroceryInventory;
+package Notification;
 
 import org.bson.Document;
 
@@ -9,8 +9,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
-public class GroceryInventory {
-	public static String getGrocery(String userID) {
+public class Notification {
+	public static String getNotification(String userID) {
 		try {  
             
 			System.out.println("MongoDBConnect to database begin");

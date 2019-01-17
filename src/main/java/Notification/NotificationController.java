@@ -1,4 +1,4 @@
-package GroceryInventory;
+package Notification;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
-public class GroceryInventoryController {
+public class NotificationController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping("/")
     public String index() 
@@ -24,7 +24,7 @@ public class GroceryInventoryController {
 	@RequestMapping(value = "getGrocery", method = RequestMethod.GET)
     public String getGrocery(@RequestParam("userID") String userID)
     {
-    	return GroceryInventory.getGrocery(userID);
+    	return Notification.getNotification(userID);
     }
 	
 }
