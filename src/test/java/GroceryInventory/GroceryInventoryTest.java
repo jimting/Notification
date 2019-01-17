@@ -1,8 +1,8 @@
-package initial;
+package GroceryInventory;
 
 import org.junit.Test;
 
-public class NotificationTest {
+public class GroceryInventoryTest {
 
 	@Test
 	public void testDatabase()
