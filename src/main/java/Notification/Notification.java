@@ -60,7 +60,7 @@ public class Notification {
             System.out.println("MongoDBConnect to database successfully");
 
             //選擇到collection
-            MongoCollection<Document> collection = mongoDatabase.getCollection("documents");
+            MongoCollection<Document> collection = mongoDatabase.getCollection("notification");
             
             //新增新資料
             Document options =  new Document();
