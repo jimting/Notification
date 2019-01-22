@@ -21,8 +21,8 @@ public class NotificationController {
     }
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "getGrocery", method = RequestMethod.GET)
-    public String getGrocery(@RequestParam("userID") String userID)
+	@RequestMapping(value = "getNotification", method = RequestMethod.GET)
+    public String getNotification(@RequestParam("userID") String userID)
     {
     	return Notification.getNotification(userID);
     }
