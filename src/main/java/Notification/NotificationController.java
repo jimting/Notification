@@ -27,6 +27,14 @@ public class NotificationController {
     	return Notification.getNotification(userID);
     }
 	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "newNotification", method = RequestMethod.GET)
+    public String newNotification(@RequestParam("userID") String userID, @RequestParam("content") String content)
+    {
+    	Notification.newNotification(userID, content);
+    	return "新增成功";
+    }
+	
 }
 
 

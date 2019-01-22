@@ -2,6 +2,7 @@ package Notification;
 
 import org.bson.Document;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -10,25 +11,23 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
 public class Notification {
-	public static String getNotification(String userID) {
+	public static String getNotification(String userID) 
+	{
 		try {  
             
 			System.out.println("MongoDBConnect to database begin");
             //連線到MongoDB服務 如果是遠端連線可以替換“localhost”為伺服器所在IP地址
 			
             //通過連線認證獲取MongoDB連線
-            MongoClient mongoClient = MongoClients.create("mongodb://cinema:cinema@140.121.196.23:4117");
+            MongoClient mongoClient = MongoClients.create("mongodb://cinema:cinema@140.121.196.23:4116");
             
             //連線到資料庫(schema)
-            MongoDatabase mongoDatabase = mongoClient.getDatabase("Grocery");
+            MongoDatabase mongoDatabase = mongoClient.getDatabase("Notification");
             System.out.println("MongoDBConnect to database successfully");
 
             //建立集合
-//            mongoDatabase.createCollection("test");
-//            System.out.println("集合建立成功");
-//選擇集合	
             String result = "[";
-            MongoCollection<Document> collection = mongoDatabase.getCollection("grocery");
+            MongoCollection<Document> collection = mongoDatabase.getCollection("notification");
             FindIterable<Document> fi = collection.find();
             MongoCursor<Document> cursor = fi.iterator();
             while(cursor.hasNext()) 
@@ -44,6 +43,38 @@ public class Notification {
         } catch (Exception e) {  
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             return "{}";
+        }
+	}
+	public static void newNotification(String userID, String content) 
+	{
+		try {  
+            
+			System.out.println("MongoDBConnect to database begin");
+            //連線到MongoDB服務 如果是遠端連線可以替換“localhost”為伺服器所在IP地址
+			
+            //通過連線認證獲取MongoDB連線
+            MongoClient mongoClient = MongoClients.create("mongodb://cinema:cinema@140.121.196.23:4116");
+            
+            //連線到資料庫(schema)
+            MongoDatabase mongoDatabase = mongoClient.getDatabase("Notification");
+            System.out.println("MongoDBConnect to database successfully");
+
+            //選擇到collection
+            MongoCollection<Document> collection = mongoDatabase.getCollection("documents");
+            
+            //新增新資料
+            Document options =  new Document();
+            options.put("account", userID);
+            options.put("content", content);
+            //已讀未讀 直接用布林表示
+            options.put("status", false);
+            
+            //插入
+            collection.insertOne(options);
+            
+            
+        } catch (Exception e) {  
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
         }
 	}
 }
