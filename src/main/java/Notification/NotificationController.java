@@ -32,7 +32,15 @@ public class NotificationController {
     public String newNotification(@RequestParam("userID") String userID, @RequestParam("content") String content)
     {
     	Notification.newNotification(userID, content);
-    	return "新增成功";
+    	return "success";
+    }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "setNotificationRead", method = RequestMethod.GET)
+    public String setNotificationRead(@RequestParam("ID") String ID)
+    {
+    	Notification.setNotificationRead(ID);
+    	return "success";
     }
 	
 }

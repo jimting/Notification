@@ -1,6 +1,7 @@
 package Notification;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
@@ -71,6 +72,39 @@ public class Notification {
             
             //插入
             collection.insertOne(options);
+            
+            
+        } catch (Exception e) {  
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+        }
+	}
+	
+	public static void setNotificationRead(String ID) 
+	{
+		try {  
+            
+			System.out.println("MongoDBConnect to database begin");
+            //連線到MongoDB服務 如果是遠端連線可以替換“localhost”為伺服器所在IP地址
+			
+            //通過連線認證獲取MongoDB連線
+            MongoClient mongoClient = MongoClients.create("mongodb://cinema:cinema@140.121.196.23:4116");
+            
+            //連線到資料庫(schema)
+            MongoDatabase mongoDatabase = mongoClient.getDatabase("Notification");
+            System.out.println("MongoDBConnect to database successfully");
+
+            //選擇到collection
+            MongoCollection<Document> collection = mongoDatabase.getCollection("notification");
+            
+            //找到要修改的資料
+            Document options =  new Document();
+            options.append("_id", new ObjectId(ID));
+            //設定為已經讀了
+            Document updateOptions = new Document();
+            updateOptions.append("status", true);
+            
+            //更新
+            collection.updateOne(options, updateOptions);
             
             
         } catch (Exception e) {  
