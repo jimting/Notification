@@ -31,8 +31,8 @@ public class NotificationController {
 	@RequestMapping(value = "newNotification", method = RequestMethod.GET)
     public String newNotification(@RequestParam("userID") String userID, @RequestParam("content") String content)
     {
-    	Notification.newNotification(userID, content);
-    	return "success";
+    	
+    	return Notification.newNotification(userID, content);
     }
 	
 	@CrossOrigin(origins = "*")

@@ -46,7 +46,7 @@ public class Notification {
             return "{}";
         }
 	}
-	public static void newNotification(String userID, String content) 
+	public static String newNotification(String userID, String content) 
 	{
 		try {  
             
@@ -72,10 +72,10 @@ public class Notification {
             
             //插入
             collection.insertOne(options);
-            
+            return "success";
             
         } catch (Exception e) {  
-            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            return e.getClass().getName() + ": " + e.getMessage() ;
         }
 	}
 	
