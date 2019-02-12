@@ -27,7 +27,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("GroceryInventory")
+                .title("Notification")
                 .description("root：http://140.121.196.23:4102/")
                 .termsOfServiceUrl("http://140.121.196.23:4102/")
                 .contact("JT")
