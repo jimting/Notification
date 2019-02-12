@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-@Api(value = "GroceryInventoryController", tags = "與周邊商品相關的所有一切都在這裡")
+@Api(value = "NotificationController", tags = "與通知相關的所有一切都在這裡")
 @RestController
 public class NotificationController {
 	
