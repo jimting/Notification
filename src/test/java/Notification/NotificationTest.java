@@ -1,16 +1,11 @@
 package Notification;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class NotificationTest {
@@ -19,7 +14,6 @@ public class NotificationTest {
 	//test controller
 	
 	@Test
-	//index
 	public void testIndex()
 	{
 		assertEquals("success", notification.index());
