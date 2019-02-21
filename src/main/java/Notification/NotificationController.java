@@ -50,6 +50,14 @@ public class NotificationController {
     	return "success";
     }
 	
+	@ApiOperation(value = "刪除最後一則通知", notes = "刪除成功救回傳success")
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "deleteNotification", method = RequestMethod.GET)
+    public String deleteNotification(@ApiParam(required = true, name = "userID", value = "使用者編號") @RequestParam("userID") String ID)
+    {
+    	Notification.deleteNotification(ID);
+    	return "success";
+    }
 }
 
 
