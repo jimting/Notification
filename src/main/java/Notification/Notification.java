@@ -132,18 +132,8 @@ public class Notification {
             //選擇到collection
             MongoCollection<Document> collection = mongoDatabase.getCollection("notification");
             
-            //找到要修改的資料
-            Document options =  new Document();
-            options.append("_id", new ObjectId(ID));
-            
-            //設定為已經讀了
-            Document updateOptions = new Document();
-            updateOptions.append("status", true);
-            Document updateDocument = new Document(); 
-            updateDocument.append("$set", updateOptions); 
-            
-            //更新
-            collection.updateOne(options, updateDocument);
+            //找到最後一個並刪除
+            collection.deleteOne(collection.find().sort(new BasicDBObject("_ID",-1)).first());
             
             
         } catch (Exception e) {  
