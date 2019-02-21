@@ -115,7 +115,7 @@ public class Notification {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
         }
 	}
-	public static void deleteNotification(String ID) 
+	public static String deleteNotification(String ID) 
 	{
 		try {  
             
@@ -134,10 +134,10 @@ public class Notification {
             
             //找到最後一個並刪除
             collection.deleteOne(collection.find().sort(new BasicDBObject("_ID",-1)).first());
-            
+            return "success";
             
         } catch (Exception e) {  
-            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            return e.getClass().getName() + ": " + e.getMessage() ;
         }
 	}
 }

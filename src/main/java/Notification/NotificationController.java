@@ -55,8 +55,7 @@ public class NotificationController {
 	@RequestMapping(value = "deleteNotification", method = RequestMethod.GET)
     public String deleteNotification(@ApiParam(required = true, name = "userID", value = "使用者編號") @RequestParam("userID") String ID)
     {
-    	Notification.deleteNotification(ID);
-    	return "success";
+		return Notification.deleteNotification(ID);
     }
 }
 
