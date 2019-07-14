@@ -17,38 +17,36 @@ import static org.junit.Assert.assertTrue;
 public class NotificationTest {
 
 	@Autowired
-	private NotificationController notification;
-	
-	//test controller
+	private NotificationController notificationController;
 	
 	@Test
 	public void testIndex()
 	{
-		assertEquals("success", notification.index());
+		assertEquals("success", notificationController.index());
 	}
 
 	@Test
 	public void testGetNotification() 
 	{
-		assertTrue(isJSONValid(notification.getNotification("1")));
+		assertTrue(isJSONValid(notificationController.getNotification("1")));
 	}
 	
 	@Test
 	public void testNewNotification()
 	{
-		assertEquals("success", notification.newNotification("1", "JUnit Test"));
+		assertEquals("success", notificationController.newNotification("1", "JUnit Test"));
 	}
 	
 	@Test
 	public void testSetRead()
 	{
-		assertEquals("success", notification.setNotificationRead("123"));
+		assertEquals("success", notificationController.setNotificationRead("123"));
 	}
 	
 	@Test
 	public void testDeleteNotification() 
 	{
-		assertEquals("success", notification.deleteNotification("1"));
+		assertEquals("success", notificationController.deleteNotification("1"));
 	}
 	
 	
