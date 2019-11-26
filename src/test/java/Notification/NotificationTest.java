@@ -1,46 +1,52 @@
 package Notification;
 
-import static org.junit.Assert.*;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class NotificationTest {
-	private NotificationController notification = new NotificationController();
-	
-	//test controller
+
+	@Autowired
+	private NotificationController notificationController;
 	
 	@Test
 	public void testIndex()
 	{
-		assertEquals("success", notification.index());
+		assertEquals("success", notificationController.index());
 	}
 
 	@Test
 	public void testGetNotification() 
 	{
-		String userID = "1";
-		assertTrue(isJSONValid(notification.getNotification(userID)));
+		assertTrue(isJSONValid(notificationController.getNotification("1")));
 	}
 	
 	@Test
 	public void testNewNotification()
 	{
-		assertEquals("success", notification.newNotification("1", "JUnit Test"));
+		assertEquals("success", notificationController.newNotification("1", "JUnit Test"));
 	}
 	
 	@Test
 	public void testSetRead()
 	{
-		assertEquals("success", notification.setNotificationRead("123"));
+		assertEquals("success", notificationController.setNotificationRead("123"));
 	}
 	
 	@Test
 	public void testDeleteNotification() 
 	{
-		assertEquals("success", notification.deleteNotification("1"));
+		assertEquals("success", notificationController.deleteNotification("1"));
 	}
 	
 	
