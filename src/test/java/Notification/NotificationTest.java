@@ -21,7 +21,8 @@ public class NotificationTest {
 	@Test
 	public void testGetNotification() 
 	{
-		assertTrue(isJSONValid(notification.getNotification("1")));
+		String userID = "1";
+		assertTrue(isJSONValid(notification.getNotification(userID)));
 	}
 	
 	@Test
